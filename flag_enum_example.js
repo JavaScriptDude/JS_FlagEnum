@@ -4,7 +4,7 @@
     // Dependencies: underscore.js
 
     // Example:
-    _w.Feature = new FlagEnum("Feature", {
+    Feature = new FlagEnum("Feature", {
           CUSTOMER      : "customer info"             // 2
         , ORDER         : "order details"             // 4
         , DELIVERY      : "delivery details"          // 8 
@@ -21,12 +21,12 @@
 
     // Check feature using bitwise mask:
     if (features & ORDER){
-        pc("features includes ORDER")
+        console.log("features includes ORDER")
     }
     // -or-
     // Check feature using has method:
     if (features.has(ORDER)){
-        pc("features includes ORDER")
+        console.log("features includes ORDER")
     }
 
     // Managing values:
@@ -120,7 +120,7 @@ _FSP.has = function FlagEnum_has(flag){
 _FSP.valid_flag = function FlagEnum_valid_flag(flag, asrt){
     var t=this, fe = t.__fenum__
     if (fe.__n__.indexOf(flag) == -1){
-        if (asrt){ throw new Error(`Invalid flag. Expecting value from ${fe.__name__} but got ${}`)}
+        if (asrt){ throw new Error(`Invalid flag. Expecting value from ${fe.__name__} but got ${getClassName(flag)} - ${flag}`)}
         return false
     }
     return true
@@ -137,7 +137,7 @@ _FSP.rem = function FlagEnum_rem(flag){
 }
 
 
-// 
+// Utility functions
 function getClassName(o){
     if(o===undefined){return "(undefined)" }
     if(o===null){return "(null)"}
