@@ -5,7 +5,7 @@ By using integers for values, the selections can be easily passed across languag
 
 ```javascript
     // Example:
-    _w.Feature = new FlagEnum("Feature", {
+    Feature = new FlagEnum("Feature", {
           CUSTOMER      : "customer info"             // 2
         , ORDER         : "order details"             // 4
         , DELIVERY      : "delivery details"          // 8 
@@ -22,12 +22,12 @@ By using integers for values, the selections can be easily passed across languag
 
     // Check feature using bitwise mask:
     if (features & ORDER){
-        pc("features includes ORDER")
+        console.log("features includes ORDER")
     }
     // -or-
     // Check feature using has method:
     if (features.has(ORDER)){
-        pc("features includes ORDER")
+        console.log("features includes ORDER")
     }
 
     // Managing values:
